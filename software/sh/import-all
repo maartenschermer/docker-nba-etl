@@ -1,0 +1,41 @@
+#!/bin/bash
+
+start=$(date)
+
+scripts=" \
+	bootstrap \
+	nsr-import_reset \
+	nsr-import_taxa \
+	nsr-import_multimedia \
+	col-import \
+	geo-import \
+	brahms-import_reset \
+	brahms-import_specimens \
+	brahms-import_multimedia \
+	crs-import_specimens \
+	crs-import_multimedia \
+	name-import \
+	"
+
+for script in $scripts
+do
+  script=${script/_/ }
+  echo Executing $script ...
+  script="./${script}"
+  $script
+  result=$?
+  if [ "$result" != 0 ]
+  then
+    Error while executing $script. Import aborted
+	echo "Import started at ${start}"
+	echo "Import aborted at ${finish}"
+    exit $result
+  fi
+done
+
+finish=$(date)
+
+echo "Import started at ${start}"
+echo "Import finished at ${finish}"
+
+
