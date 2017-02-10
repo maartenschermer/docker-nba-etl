@@ -1,5 +1,7 @@
 # docker-nba-etl
 
+https://travis-ci.org/AtzeDeVries/travisci-nba-etl-docker.svg?branch=master
+
 This docker image can be used to run a import using the NBA ETL module.
 The import data is not in the container. You should bindmount it.
 
