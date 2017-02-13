@@ -5,5 +5,5 @@ RUN apk add --no-cache bash
 WORKDIR /payload
 ADD software software
 RUN mkdir data
-WORKDIR /payload/software
-ADD version version
+ADD version /payload/software/sh/version
+WORKDIR /payload/software/sh
