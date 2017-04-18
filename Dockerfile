@@ -6,4 +6,6 @@ WORKDIR /payload
 ADD software software
 RUN mkdir data
 ADD version /payload/software/sh/version
+ENV LOG_LEVEL INFO
+ADD log4j2.xml /payload/software/conf/log4j2.xml
 WORKDIR /payload/software/sh
