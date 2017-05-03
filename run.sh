@@ -83,6 +83,7 @@ then
         echo repo: $url
         echo branch: $branch 
         echo clonedir: $clonedir
+        rm -fr $clonedir
         echo command: git clone --single-branch $url $clonedir -b $branch
         git clone --single-branch $url $clonedir -b $branch
         (cd $clonedir ; sh uncompress.sh)
