@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NBA_ETL_HOME=/payload/software
+NBA_ETL_HOME=/data/nba-import/software
 
 cnf_dir=${NBA_ETL_HOME}/conf
 lib_dir=${NBA_ETL_HOME}/lib
@@ -18,6 +18,11 @@ suppress_errors=false
 
 # The number of documents to index at once
 queue_size=1000
+
+# Provide a comma-separated list of genera to import.
+# This will create a test set with only the specified
+# genera from COL, NSR, CRS and BRAHMS.
+#test_genera=malus,parus,larus,bombus,rhododendron,felix,tulipa,rosa,canis,passer,trientalis
 
 # Make ${confDir} the first entry on the classpath so
 # that resource/config files will be found there first.
@@ -40,13 +45,14 @@ then
   log_file="${log_file}__${2}"
 fi
 dt=$(date +%Y%m%d%H%m)
-log_file="${log_dir}/${log_file}.${dt}.log"
-echo "Log file: ${log_file}"
+log_file="${log_dir}/${log_file}.${dt}"
+echo "Log file: ${log_file}.log"
 
-JAVA_OPTS="-Xms1536m -Xmx1536m"
+JAVA_OPTS="-Xms2048m -Xmx2048m"
 JAVA_OPTS="${JAVA_OPTS} -Dfile.encoding=UTF-8"
 JAVA_OPTS="${JAVA_OPTS} -DsuppressErrors=${suppress_errors}"
 JAVA_OPTS="${JAVA_OPTS} -DqueueSize=${queue_size}"
 JAVA_OPTS="${JAVA_OPTS} -Dnba.v2.conf.dir=${cnf_dir}"
 JAVA_OPTS="${JAVA_OPTS} -Dlog4j.configurationFile=${cnf_dir}/log4j2.xml"
 JAVA_OPTS="${JAVA_OPTS} -Dnba.v2.etl.logfile=${log_file}"
+JAVA_OPTS="${JAVA_OPTS} -Dnl.naturalis.nba.etl.test.genera=${test_genera}"
