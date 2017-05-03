@@ -23,7 +23,7 @@ ndff
 nsr
 ```
 
-You can also overwrite settings with environment variables (from version V2.3-1-g9871aa6e and up) posibilities (with defaults) are
+You can also overwrite settings with environment variables (from version V2.3-20-g461dab56 and up) posibilities (with defaults) are
 ```shell
 ES_DNS=es
 DEFAULT_SHARDS=12
@@ -69,7 +69,7 @@ REPOS="nba-brondata-nsr:master,nba-brondata-medialib:master,nba-brondata-crs:mas
 ```
 so running:
 ```shell
-docker run --name my-import-job -e AUTO_IMPORT=TRUE docker-nba-etl:V2.3-1-g987aa6e
+docker run --name my-import-job -e AUTO_IMPORT=TRUE docker-nba-etl:V2.3-20-g461dab56
 ```
 Will download data for nsr,medialib,crs,col and brahms and run `./import_all`
 
@@ -82,5 +82,5 @@ docker run --name geo-import-job \
     -e REPOS="nba-brondata-geo:master" \
     -e IMPORT_COMMAND="./bootstrap GeoAreas && ./geo-import" \
     -e "AUTO_IMPORT=TRUE"
-    docker-nba-etl:V2.3-1-g987aa6e
+    docker-nba-etl:V2.3-20-g461dab56
 ```
