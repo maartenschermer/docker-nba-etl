@@ -13,16 +13,16 @@ elasticsearch.index.0.types=Specimen,Taxon,MultiMediaObject,ScientificNameGroup
 elasticsearch.index.1.name=geoareas
 elasticsearch.index.1.types=GeoArea
 elasticsearch.index.1.shards=1
-etl.install.dir=/payload/software
-etl.crs.data.dir=/payload/data/crs
-etl.col.data.dir=/payload/data/col
-etl.brahms.data.dir=/payload/data/brahms
-etl.nsr.data.dir=/payload/data/nsr
-etl.geo.data.dir=/payload/data/geo
-etl.ndff.data.dir=/payload/data/ndff
-etl.medialib.data.dir=/payload/data/medialib
-etl.col.year=$COL_YEAR
-etl.purl.baseurl=$PURL_BASE_URL
+install.dir=/payload/software
+crs.data.dir=/payload/data/crs
+col.data.dir=/payload/data/col
+brahms.data.dir=/payload/data/brahms
+nsr.data.dir=/payload/data/nsr
+geo.data.dir=/payload/data/geo
+ndff.data.dir=/payload/data/ndff
+medialib.data.dir=/payload/data/medialib
+col.year=$COL_YEAR
+purl.baseurl=$PURL_BASE_URL
 EOF
 
 
