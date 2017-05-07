@@ -30,7 +30,12 @@ EOF
 echo patch for testset
 sed -i "s/#test_genera.*/$TEST_GENERA/g" /payload/software/sh/include.sh
 
-
+# patch log4j.xml
+if [ "$CONSOLE_LOG" == "TRUE" ]
+then
+    echo Enableing console-log 
+    sed -i 's#<!-- AppenderRef ref="CONSOLE" / -->#<Appender Ref="CONSOLE" />#' /payload/software/conf/log4j2.xml
+fi
 if [ "$AUTO_IMPORT" == "FALSE" ]
 then
     echo No autoimport. Ending bootstrap. Going to sleep

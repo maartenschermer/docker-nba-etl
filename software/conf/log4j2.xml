@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- log4j configuration for unit tests -->
 <Configuration>
-	<Appenders>
-		<Console name="CONSOLE">
-			<PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n" />
-		</Console>
-		<File name="FILE" fileName="${sys:nba.v2.etl.logfile}">
-			<PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n" />
-		</File>
-	</Appenders>
-	<Loggers>
-		<Root level="INFO">
-			<AppenderRef ref="FILE" />
-			<AppenderRef ref="CONSOLE" />
-		</Root>
-	</Loggers>
+        <Appenders>
+                <Console name="CONSOLE">
+                        <PatternLayout pattern="%d{HH:mm:ss.SSS}|%-5level|%c{10}: %msg%n" />
+                </Console>
+                <File name="FILE" fileName="${sys:nba.v2.etl.logfile}.log">
+                        <PatternLayout pattern="%d{HH:mm:ss.SSS}|%-5level|%c{10}: %msg%n" />
+                </File>
+                <File name="JSON" fileName="${sys:nba.v2.etl.logfile}.json">
+                        <JSONLayout complete="false" compact="true"
+                                includeStacktrace="false" eventEol="true" />
+                </File>
+        </Appenders>
+        <Loggers>
+                <Logger name="nl.naturalis" level="${env:LOG_LEVEL}" additivity="false">
+                        <AppenderRef ref="FILE" />
+                        <!-- AppenderRef ref="JSON" / -->
+                        <!-- AppenderRef ref="CONSOLE" / -->
+                </Logger>
+                <Root level="ERROR">
+                        <AppenderRef ref="FILE" />
+                        <!-- AppenderRef ref="JSON" / -->
+                        <!-- AppenderRef ref="CONSOLE" / -->
+                </Root>
+        </Loggers>
 </Configuration>
