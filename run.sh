@@ -34,7 +34,7 @@ sed -i "s/#test_genera.*/$TEST_GENERA/g" /payload/software/sh/include.sh
 if [ "$CONSOLE_LOG" == "TRUE" ]
 then
     echo Enableing console-log 
-    sed -i 's#<!-- AppenderRef ref="CONSOLE" / -->#<Appender Ref="CONSOLE" />#' /payload/software/conf/log4j2.xml
+    sed -i 's#<!-- AppenderRef ref="CONSOLE" / -->#<AppenderRef Ref="CONSOLE" />#' /payload/software/conf/log4j2.xml
 fi
 if [ "$AUTO_IMPORT" == "FALSE" ]
 then
