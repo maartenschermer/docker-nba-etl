@@ -65,6 +65,7 @@ AUTO_IMPORT=TRUE (default false)
 IMPORT_DATA_DIR=/payload/data (dont really change unless you are sure)
 IMPORT_COMMAND=./import-all
 GIT_URL_PREFIX=https://github.com/naturalis/
+CONSOLE_LOG=TRUE (default is false)
 REPOS="nba-brondata-nsr:master,nba-brondata-medialib:master,nba-brondata-crs:master,nba-brondata-col:master,nba-brondata-brahms:master,nba-brondata-geo:master"
 ```
 so running:
