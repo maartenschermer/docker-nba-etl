@@ -31,12 +31,22 @@ echo patch for testset
 sed -i "s/#test_genera.*/$TEST_GENERA/g" /payload/software/sh/include.sh
 
 # patch log4j.xml
-if [ "$CONSOLE_LOG" == "TRUE" ]
+if [ "$CONSOLE_LOG" = "TRUE" ]
 then
-    echo Enableing console-log 
-    sed -i 's#<!-- AppenderRef ref="CONSOLE" / -->#<AppenderRef Ref="CONSOLE" />#' /payload/software/conf/log4j2.xml
+    echo Enabling console-log 
+    sed -i 's#<!-- AppenderRef ref="CONSOLE" / -->#<AppenderRef ref="CONSOLE" />#' /payload/software/conf/log4j2.xml
 fi
-if [ "$AUTO_IMPORT" == "FALSE" ]
+
+if [ "$ENABLE_FILEBEAT" = "TRUE" ]
+then
+    echo Enabling filebeat to ship log to elasticearch
+    sed -i 's#<!-- AppenderRef ref="JSON" / -->#<AppenderRef ref="JSON" />#' /payload/software/conf/log4j2.xml
+    sed -i 's#<AppenderRef ref="CONSOLE" />#<!-- AppenderRef ref="CONSOLE" / -->#' /payload/software/conf/log4j2.xml
+    sed -i 's#<AppenderRef ref="FILE" />#<!-- AppenderRef ref="FILE" / -->#' /payload/software/conf/log4j2.xml
+    /filebeat/filebeat -v -e -c /filebeat/etl.yml &
+fi
+
+if [ "$AUTO_IMPORT" = "FALSE" ]
 then
     echo No autoimport. Ending bootstrap. Going to sleep
     while true
