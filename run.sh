@@ -37,6 +37,14 @@ then
     sed -i 's#<!-- AppenderRef ref="CONSOLE" / -->#<AppenderRef ref="CONSOLE" />#' /payload/software/conf/log4j2.xml
 fi
 
+# Log es size for debugging
+if [ "$ESSIZE_LOG" = "TRUE" ]
+then
+    echo Running log jobs for es size
+    sh ./log_es_size.sh > nba_size_log.txt &
+fi
+
+
 if [ "$ENABLE_FILEBEAT" = "TRUE" ]
 then
     echo Enabling filebeat to ship log to elasticearch
