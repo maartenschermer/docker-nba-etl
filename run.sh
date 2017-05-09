@@ -60,7 +60,7 @@ fi
 
 URL_PRE=$GIT_URL_PREFIX
 #AUTO Download repo's
-if [[ -z "${REPOS}" ]]
+if [ -z "${REPOS// }" ]
 then
     echo "NO REPOS defined"
     exit 1
@@ -73,7 +73,7 @@ then
     IFS=','
     for repo in ${REPOS}; do
         count_double_p=$(echo $repo | tr -cd ':' | wc -c)
-        if [ ! "$count_double_p" == "1" ]
+        if [ ! "$count_double_p" = "1" ]
         then
             echo invalid format $repo
             echo found $count_double_p ':', should be 1
@@ -86,7 +86,7 @@ then
 fi
 
 # do stuff
-if [ ! -z "${REPOS}" ]
+if [ ! -z "${REPOS// }" ]
 then
     OLDIFS=$IFS
     IFS=','
