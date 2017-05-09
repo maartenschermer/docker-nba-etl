@@ -86,7 +86,7 @@ then
 fi
 
 # do stuff
-if [ ! -z "${REPOS// }" ]
+if [ ! -z "${REPOS}" ]
 then
     OLDIFS=$IFS
     IFS=','
