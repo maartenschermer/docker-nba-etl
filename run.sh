@@ -8,11 +8,17 @@ elasticsearch.transportaddress.host=$ES_DNS
 elasticsearch.transportaddress.port=9300
 elasticsearch.index.default.shards=$DEFAULT_SHARDS
 elasticsearch.index.default.replicas=$NUM_REPLICAS
-elasticsearch.index.0.name=$NBA_INDEX_NAME
-elasticsearch.index.0.types=Specimen,Taxon,MultiMediaObject,ScientificNameGroup
-elasticsearch.index.1.name=geoareas
-elasticsearch.index.1.types=GeoArea
-elasticsearch.index.1.shards=1
+elasticsearch.index.0.name=specimen
+elasticsearch.index.0.types=Specimen
+elasticsearch.index.1.name=taxon
+elasticsearch.index.1.types=Taxon
+elasticsearch.index.2.name=multimedia
+elasticsearch.index.2.types=MultiMediaObject
+elasticsearch.index.3.name=namegroup
+elasticsearch.index.3.types=ScientificNameGroup
+elasticsearch.index.4.name=geoareas
+elasticsearch.index.4.types=GeoArea
+elasticsearch.index.4.shards=1
 install.dir=/payload/software
 crs.data.dir=/payload/data/crs
 col.data.dir=/payload/data/col
@@ -35,13 +41,6 @@ if [ "$CONSOLE_LOG" = "TRUE" ]
 then
     echo Enabling console-log 
     sed -i 's#<!-- AppenderRef ref="CONSOLE" / -->#<AppenderRef ref="CONSOLE" />#' /payload/software/conf/log4j2.xml
-fi
-
-# Log es size for debugging
-if [ "$ESSIZE_LOG" = "TRUE" ]
-then
-    echo Running log jobs for es size
-    sh ./log_es_size.sh > nba_size_log.txt &
 fi
 
 
