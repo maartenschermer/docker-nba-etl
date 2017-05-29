@@ -6,7 +6,7 @@ ENV ES_DNS=es DEFAULT_SHARDS=12 NUM_REPLICAS=0 NBA_INDEX_NAME=nba COL_YEAR=2016 
 ENV TEST_GENERA=#test_genera=malus,parus,larus,bombus,rhododendron,felix,tulipa,rosa,canis,passer,trientalis
 ENV AUTO_IMPORT=FALSE GIT_URL_PREFIX=https://github.com/naturalis/ IMPORT_DATA_DIR=/payload/data IMPORT_COMMAND=./import-all CONSOLE_LOG=FALSE
 ENV REPOS="nba-brondata-nsr:master,nba-brondata-medialib:master,nba-brondata-crs:master,nba-brondata-col:master,nba-brondata-brahms:master,nba-brondata-geo:master"
-ENV FILEBEAT_VERSION=5.1.2 LOG_LEVEL=INFO ENABLE_FILEBEAT=FALSE
+ENV FILEBEAT_VERSION=5.1.2 LOG_LEVEL=INFO ENABLE_FILEBEAT=FALSE LANG=en_US.UTF-8
 #RUN mkdir /payload
 #RUN apk add --no-cache bash git
 
