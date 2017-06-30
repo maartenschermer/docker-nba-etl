@@ -82,6 +82,6 @@ If you for example just want to import Geo you run
 docker run --name geo-import-job \
     -e REPOS="nba-brondata-geo:master" \
     -e IMPORT_COMMAND="./bootstrap GeoAreas && ./geo-import" \
-    -e "AUTO_IMPORT=TRUE"
+    -e "AUTO_IMPORT=TRUE" \
     docker-nba-etl:V2.3-20-g461dab56
 ```
